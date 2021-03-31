@@ -1,0 +1,113 @@
+div#container
+{
+   width: 1248px;
+   position: relative;
+   margin: 0 auto 0 auto;
+   text-align: left;
+}
+body
+{
+   background-color: #FFFFFF;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.1875;
+   margin: 0;
+   text-align: center;
+}
+#UserInfoTable
+{
+   border: 5px solid #0000FF;
+   background-color: transparent;
+   background-image: none;
+   border-collapse: separate;
+   border-spacing: 1px;
+   margin: 0;
+}
+#UserInfoTable td
+{
+   padding: 0;
+}
+#UserInfoTable td div
+{
+   white-space: nowrap;
+}
+#UserInfoTable .cell0
+{
+   background-color: transparent;
+   background-image: none;
+   border: 1px #000000 solid;
+   text-align: center;
+   vertical-align: middle;
+   width: 380px;
+   height: 90px;
+}
+#UserInfoTable .cell1
+{
+   background-color: transparent;
+   background-image: none;
+   border: 1px #000000 solid;
+   text-align: center;
+   vertical-align: middle;
+   height: 90px;
+}
+#UserInfoTable .cell2
+{
+   background-color: transparent;
+   background-image: none;
+   border: 1px #000000 solid;
+   text-align: center;
+   vertical-align: middle;
+   width: 380px;
+   height: 102px;
+}
+#UserInfoTable .cell3
+{
+   background-color: transparent;
+   background-image: none;
+   border: 1px #000000 solid;
+   text-align: center;
+   vertical-align: middle;
+   height: 102px;
+}
+#wb_Text2 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px solid #000000;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text2 div
+{
+   text-align: left;
+}
+
+#cancel
+{
+   border: 1px solid #000000;
+   background-color: #F5F5F5;
+   background-image: none;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   margin: 0;
+}
+
+#phoneNumber.errors {
+   color: red;
+   position: absolute;
+   inline-size: max-content;
+   top: 65%;
+   left: 53%;
+}
+#email.errors {
+   color: red;
+   position: absolute;
+   inline-size: max-content;
+   top: 91%;
+   left: 67%;
+}

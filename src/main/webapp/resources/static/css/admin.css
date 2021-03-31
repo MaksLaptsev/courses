@@ -1,0 +1,71 @@
+table {
+    font-family: "Times New Roman";
+    font-size: 16px;
+    background: white;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 0 auto 20px;
+}
+body{
+    background-color: #F7F7F7;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.1875;
+    margin: 0;
+    text-align: center;
+}
+
+td {
+    transition: .3s linear;
+}
+.table th {
+    font-size: 14px;
+    font-weight: normal;
+    color: #039;
+    padding: 10px 15px;
+}
+
+.table td {
+    color: #669;
+    border-top: 1px solid #e8edff;
+    padding: 10px 15px;
+}
+
+.table tr:hover td {
+    background: #e8edff;
+}
+#myModal {
+    width: 600px; height: 400px;
+    padding: 18px 9px;
+    border-radius: 4px;
+    background: #fafafa;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    display: none;
+    opacity: 0;
+    z-index: 38;
+    text-align: center;
+}
+
+#myModal #myModal__close {
+    width: 21px; height: 21px;
+    position: absolute;
+    font-size: 29px;
+    top: 1px; right: 11px;
+    cursor: pointer;
+    display: block;
+}
+
+#myOverlay {
+    z-index: 37;
+    position: fixed;
+    background: rgba(0,0,0,.7);
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    cursor: pointer;
+    display: none;
+}

@@ -1,0 +1,115 @@
+#Line2
+{
+    border-color: #A0A0A0;
+    border-style: solid;
+    border-bottom-width: 12px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    height: 0 !important;
+    line-height: 0px !important;
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Arial;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.1875;
+    margin: 0;
+    text-align: center;
+}
+div#genreDiv
+{
+    width: 1250px;
+    position: relative;
+    margin: 0 auto 0 auto;
+    text-align: left;
+}
+#DETECTIVE
+{
+    border: 1px dotted #000000;
+    border-radius: 4px;
+    background-color: #AFEEEE;
+    background-image: none;
+    color: #000000;
+    font-family: "Times New Roman", serif;
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+}
+#THRILLER
+{
+    border: 1px dotted #000000;
+    border-radius: 4px;
+    background-color: #AFEEEE;
+    background-image: none;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+}
+#DOCUMENTARY
+{
+    border: 1px dotted #000000;
+    border-radius: 4px;
+    background-color: #AFEEEE;
+    background-image: none;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+}
+#DRAMATURGY
+{
+    border: 1px dotted #000000;
+    border-radius: 4px;
+    background-color: #AFEEEE;
+    background-image: none;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+}
+#ART
+{
+    border: 1px dotted #000000;
+    border-radius: 4px;
+    background-color: #AFEEEE;
+    background-image: none;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+}
+#SCIENCE
+{
+    border: 1px dotted #000000;
+    border-radius: 4px;
+    background-color: #AFEEEE;
+    background-image: none;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+}
+#ADVENTURE
+{
+    border: 1px dotted #000000;
+    border-radius: 4px;
+    background-color: #AFEEEE;
+    background-image: none;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0;
+}

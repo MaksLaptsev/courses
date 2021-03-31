@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+#containerRegistration{
+   position: relative;
+   top: -9%;
+}
+
+html, body {
+   height : 100%;
+   padding: 0;
+   margin: 0;
+}
+
+body{
+   font-family: 'Roboto', sans-serif;
+   font-size: 14px;
+}
+
+.outer {
+   display: table;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   min-height: 400px;
+}
+.middle {
+   display: table-cell;
+   vertical-align: middle;
+}
+.inner {
+   text-align: center;
+   width: auto;
+   padding: 0 15px;
+}
+.login-wr {
+   position: relative;
+   margin: 0 auto;
+   background: #fff;
+   max-width: 350px;
+   box-shadow: 3px 3px 10px #333;
+   padding: 15px 15px 0 15px;
+}
+
+h2 {
+   text-align: left;
+   font-weight: 200;
+   font-size: 1.6em;
+   margin: 0 0 10px 0;
+   padding: 0 0 10px 0;
+   border-bottom: 1px solid #eeeeee;
+   color: #474747;
+}
+.form {
+   padding-top: 20px;
+   text-align: center;
+}
+input[type="text"],
+input[type="password"],
+button {
+   margin-bottom: 25px;
+   height: 40px;
+   outline: 0;
+   -moz-outline-style: none;
+}
+input[id="username"] {
+   background: url("../images/user.png") no-repeat left 10px center;
+}
+input[id="password"] {
+   background: url("../images/pencil.png") no-repeat left 10px center;
+}
+
+input[type="text"],
+input[type="password"] {
+   width: calc(80% - 45px);
+   border: 1px solid #bbb;
+   padding: 0 0 0 45px;
+   font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+   border: 1px solid #2196f3;
+}
+a {
+   text-align: center;
+   font-size: 12px;
+   color: #3498db;
+}
+button {
+   width: 80%;
+   background: #2196f3;
+   border: none;
+   border-bottom: 5px solid #2184d7;
+   color: white;
+   font-size: 18px;
+   font-weight: 200;
+   cursor: pointer;
+   transition: box-shadow .4s ease;
+}
+p {
+   padding-bottom: 10px;
+}
+
+#myModal {
+   width: 250px; height: 70px;
+   margin: 0 auto;
+   padding: 18px 9px;
+   border-radius: 4px;
+   background: #fafafa;
+   position: absolute;
+   top: 0; left: 0; right: 0; bottom: 0;
+   margin: auto;
+   display: none;
+   opacity: 0;
+   z-index: 38;
+   text-align: center;
+}
+#myModal #myModal__close {
+   width: 21px; height: 21px;
+   position: absolute;
+   top: 1px; right: 11px;
+   cursor: pointer;
+   display: block;
+   font-size: 29px;
+}
+#myOverlay {
+   z-index: 37;
+   position: fixed;
+   background-color: rgba(0,0,0,.7);
+   width: 100%; height: 100%;
+   top: 0; left: 0;
+   cursor :pointer;
+   display :none;
+}
+span.error {
+   color: red;
+   position: fixed;
+   inline-size: max-content;
+   left: 59%;
+   text-align: left;
+}

@@ -1,0 +1,229 @@
+*{box-sizing:border-box}
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i&subset=cyrillic';
+#bodyEditBook {
+    margin: 0;
+    background: #F7F7F7;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+}
+.form-wrap {
+    width: 700px;
+    background: #ffd500;
+    border-radius: 20px;
+    height: 610px;
+}
+.form-wrap *{transition: .1s linear}
+.profile {
+    width: 350px;
+    float: left;
+    text-align: center;
+    padding: 30px;
+}
+form {
+    float: left;
+    width: calc(100% - 350px);
+    padding: 30px;
+    border-radius: 0 20px 20px 0;
+    color: #7b7b7b;
+}
+.form-wrap:after, form div:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+form div {
+    margin-bottom: 15px;
+    position: relative;
+}
+#h1EditBook {
+    font-size: 24px;
+    font-weight: 400;
+    position: relative;
+    margin: revert;
+    display: block;
+}
+#h2EditBook{
+    font-size: 24px;
+    font-weight: 400;
+    position: relative;
+    display: block;
+    margin: revert;
+}
+label, span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+#input[type="text"], #input[type="email"], #pages[type="number"], #price, #quantity {
+    width: 100%;
+    padding: 10px 15px;
+    border-width: 0;
+    background: #e6e6e6;
+    outline: none;
+    margin: 0;
+}
+#input[type="text"], #input[type="email"], #pages[type="number"], #price, #quantity:focus {
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.2);
+}
+#changeButton {
+    padding: 10px 0;
+    border-width: 0;
+    display: block;
+    width: 120px;
+    margin: 25px auto 0;
+    background: #60e6c5;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    text-transform: uppercase;
+}
+@media (max-width: 600px) {
+    body {display: block}
+    .form-wrap {margin: 20px auto; max-width: 550px; width:100%}
+    .profile, form {float: none; width: 100%}
+    h1 {margin-top: auto; padding-bottom: 50px;}
+    form {border-radius: 0 0 20px 20px}
+}
+
+table {
+    font-family: "Times New Roman";
+    font-size: 16px;
+    background: white;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 0 auto 20px;
+}
+
+td {
+    transition: .3s linear;
+}
+.table th {
+    font-size: 14px;
+    font-weight: normal;
+    color: #039;
+    padding: 10px 15px;
+}
+
+.table td {
+    color: #669;
+    border-top: 1px solid #e8edff;
+    padding: 10px 15px;
+}
+
+.table tr:hover td {
+    background: #e8edff;
+}
+#myModal {
+    width: 600px; height: 400px;
+    padding: 18px 9px;
+    border-radius: 4px;
+    background: #fafafa;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    display: none;
+    opacity: 0;
+    z-index: 38;
+    text-align: center;
+    overflow: scroll;
+}
+
+#myModal #myModal__close {
+    width: 21px; height: 21px;
+    position: absolute;
+    font-size: 29px;
+    top: 1px; right: 11px;
+    cursor: pointer;
+    display: block;
+}
+
+#myOverlay {
+    z-index: 37;
+    position: fixed;
+    background: rgba(0,0,0,.7);
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    cursor: pointer;
+    display: none;
+}
+
+#pageEditBook{
+    position: absolute;
+    top: 270px;
+    left: 100px;
+}
+span.error {
+    color: red;
+    position: absolute;
+    top: 25px;
+    inline-size: fit-content;
+    left: 300px;
+}
+#authors.errors{
+    left: 0;
+    top: 110%;
+}
+#genre.errors{
+    left: 100%;
+    top: 110%;
+    inline-size: max-content;
+}
+#modalAuthors, #modalGenre {
+    width: max-content; height: 400px;
+    padding: 18px 9px;
+    border-radius: 4px;
+    background: #fafafa;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    display: none;
+    opacity: 0;
+    z-index: 38;
+    text-align: center;
+    overflow: scroll;
+}
+
+#modalAuthors #modalAuthors__close, #modalGenre #modalGenre__close {
+    width: 21px; height: 21px;
+    font-size: 29px;
+    right: 11px;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    left: 80%;
+    top: -3%;
+}
+#divGenreChose{
+    position: absolute;
+    left: 80%;
+    top: 76%;
+}
+
+#overlayAuthors, #overlayGenre {
+    z-index: 37;
+    position: fixed;
+    background: rgba(0,0,0,.7);
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    cursor: pointer;
+    display: none;
+}
+.checkbox{
+    display: -webkit-box;
+}
+span.error {
+    color: red;
+    position: absolute;
+    top: 25px;
+    inline-size: max-content;
+    left: 300px;
+}
+span#genre.errors.error{
+    position: absolute;
+    left: 120px;
+    top: 42px;
+    inline-size: max-content;
+}
