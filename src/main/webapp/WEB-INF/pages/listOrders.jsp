@@ -65,10 +65,10 @@
             <form name="sortMenu">
                 <select name="sel" onChange="changeSort(document.sortMenu.sel)">
                     <option value="#"><spring:message code="app.page.selectSort"/></option>
-                    <option title="Сортировка по дате" value="${clearUrl}?sort=dataTimestamp&ascending=true">по дате ↑</option>
-                    <option title="Сортировка по дате" value="${clearUrl}?sort=dataTimestamp&ascending=false">по дате ↓</option>
-                    <option title="Сортировка по дате" value="${clearUrl}?sort=id&ascending=true">по id ↑</option>
-                    <option title="Сортировка по дате" value="${clearUrl}?sort=id&ascending=false">по id ↓</option>
+                    <option title="Сортировка по дате" value="${clearUrl}?sort=dataTimestamp&ascending=true"><spring:message code="app.sort.date"/> ↑</option>
+                    <option title="Сортировка по дате" value="${clearUrl}?sort=dataTimestamp&ascending=false"><spring:message code="app.sort.date"/> ↓</option>
+                    <option title="Сортировка по дате" value="${clearUrl}?sort=id&ascending=true"><spring:message code="app.sort.id"/> ↑</option>
+                    <option title="Сортировка по дате" value="${clearUrl}?sort=id&ascending=false"><spring:message code="app.sort.id"/> ↓</option>
                 </select>
             </form>
             <script>

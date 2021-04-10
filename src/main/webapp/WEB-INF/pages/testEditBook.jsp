@@ -18,11 +18,11 @@
             <table id="tableBooks" class="table">
                 <tr>
                     <th width="20px">Id</th>
-                    <th style="border-bottom: black">Name</th>
-                    <th style="border-bottom: black">pages</th>
-                    <th style="border-bottom: black">publisher</th>
-                    <th style="border-bottom: black">language</th>
-                    <th style="border-bottom: black">price</th>
+                    <th style="border-bottom: black"><spring:message code="app.table.nameBook"/></th>
+                    <th style="border-bottom: black"><spring:message code="app.table.pages"/></th>
+                    <th style="border-bottom: black"><spring:message code="app.livrary.publish"/></th>
+                    <th style="border-bottom: black"><spring:message code="app.book.language"/></th>
+                    <th style="border-bottom: black"><spring:message code="app.table.price"/></th>
                 </tr>
                 <c:forEach items="${books}" var="item">
                 <tr>

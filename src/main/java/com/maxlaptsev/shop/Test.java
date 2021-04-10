@@ -95,8 +95,20 @@ public class Test {
 //        order.setDateStringWithFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(order.getDataTimestamp()));
 //
 
-        User user =  session.get(User.class,1903);
-        session.delete(user);
+        Book book =  session.get(Book.class,2488);
+        Book book1 =  session.get(Book.class,2520);
+        Book book2=  session.get(Book.class,2552);
+        Book book3 =  session.get(Book.class,2554);
+//        Book book4 =  session.get(Book.class,2325);
+//        Book book5 =  session.get(Book.class,2328);
+//        Book book6 =  session.get(Book.class,2360);
+//        Book book7 =  session.get(Book.class,2392);
+//        Book book8 =  session.get(Book.class,2424);
+//        Book book9 =  session.get(Book.class,2456);
+
+        for (Book b : Arrays.asList(book, book1, book2, book3)) {
+            session.delete(b);
+        }
         transaction.commit();
 
 //

@@ -41,22 +41,22 @@
 <script type="text/javascript" >
     function addToBasket(id) {
         <sec:authorize access="isAuthenticated()">
-        $.ajax({
-            url: '/userBasket/addToBasket',
-            method: 'POST',
-            action: 'update',
-            data:{id: id},
-            success: function (response) {
-                alert('<spring:message code="app.basket.action.add"/>');
-            },
-            error:  function(xhr, str){
-                alert('<spring:message code="app.page.error"/> ' + xhr.responseCode);
-            }
-        });
-        return false;
+            $.ajax({
+                url: '/userBasket/addToBasket',
+                method: 'POST',
+                action: 'update',
+                data:{id: id},
+                success: function (response) {
+                    alert('<spring:message code="app.basket.action.add"/>');
+                },
+                error:  function(xhr, str){
+                    alert('<spring:message code="app.page.error"/> ' + xhr.responseCode);
+                }
+            });
+            return false;
         </sec:authorize>
         <sec:authorize access="!isAuthenticated()">
-        alert('<spring:message code="app.page.regOrLog"/>');
+            alert('<spring:message code="app.page.regOrLog"/>');
         </sec:authorize>
         return false;
     }

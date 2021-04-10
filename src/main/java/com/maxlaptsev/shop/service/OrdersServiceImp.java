@@ -43,8 +43,8 @@ public class OrdersServiceImp implements OrdersService {
     }
 
 
-    public List<String> checkBook(String userName){
-        User user = userService.getUserByUsername(userName);
+    public List<String> checkBook(Integer id){
+        User user = userService.findUserById(id);
         List<String> check = new ArrayList<>();
         Map<Integer, Integer> map = utilService.getMapForCheck(user.getBasket().getBooks());
 
@@ -56,8 +56,8 @@ public class OrdersServiceImp implements OrdersService {
         return  check;
     }
 
-    public void createOrder(String userName){
-        User user = userService.getUserByUsername(userName);
+    public void createOrder(Integer userId){
+        User user = userService.findUserById(userId);
         Order order = new Order();
         order.setBooks(user.getBasket().getBooks());
         bookServiceImp.correctQuantity(user.getBasket().getBooks());

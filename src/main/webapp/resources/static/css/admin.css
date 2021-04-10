@@ -37,7 +37,7 @@ td {
 .table tr:hover td {
     background: #e8edff;
 }
-#myModal {
+#myModal,#modalSuccess,#modalSuccessAuthor,#modalSuccessEditBook,#modalSuccessEditAuthor {
     width: 600px; height: 400px;
     padding: 18px 9px;
     border-radius: 4px;
@@ -51,7 +51,7 @@ td {
     text-align: center;
 }
 
-#myModal #myModal__close {
+#myModal #myModal__close, #modalSuccess #modalSuccess__close,#modalSuccessAuthor #modalSuccessAuthor__close,#modalSuccessEditBook #modalSuccessEditBook__close,#modalSuccessEditAuthor #modalSuccessEditAuthor__close  {
     width: 21px; height: 21px;
     position: absolute;
     font-size: 29px;
@@ -60,7 +60,7 @@ td {
     display: block;
 }
 
-#myOverlay {
+#myOverlay, #overlaySuccess,#overlaySuccessAuthor,#overlaySuccessEditBook,#overlaySuccessEditAuthor {
     z-index: 37;
     position: fixed;
     background: rgba(0,0,0,.7);

@@ -89,11 +89,10 @@ public class AdminController {
             request.setAttribute("authors", authorServiceImp.findAll());
             return "editBook";
         }else{
-            Book bookFromDB = bookServiceImp.findById(book.getId());
             bookServiceImp.save(book);
-            request.setAttribute("genre", GenreEnum.values());
-            request.setAttribute("authors", authorServiceImp.findAll());
-            return "editBook";
+            request.setAttribute("Id", book.getId());
+            request.setAttribute("successEditBook", "Yes");
+            return "admin";
         }
     }
 
@@ -102,6 +101,7 @@ public class AdminController {
         request.setAttribute("bookForm",new Book());
         request.setAttribute("authors", authorServiceImp.findAll());
         request.setAttribute("genre", GenreEnum.values());
+        request.setAttribute("success", "No");
         request.getRequestDispatcher("/WEB-INF/pages/addBook.jsp").forward(request, response);
     }
 
@@ -113,7 +113,9 @@ public class AdminController {
             return "addBook";
         }else {
             bookServiceImp.save(book);
-            return "editBook";
+            request.setAttribute("successBook", "Yes");
+            request.setAttribute("Id", book.getId());
+            return "admin";
         }
     }
 
@@ -137,7 +139,9 @@ public class AdminController {
             editAuthor.setBio(author.getBio());
             editAuthor.setUrlImg(author.getUrlImg());
             authorServiceImp.save(editAuthor);
-            return "redirect:/admin/list/author?id="+editAuthor.getId();
+            request.setAttribute("Id",editAuthor.getId());
+            request.setAttribute("successEditAuthor","Yes");
+            return "admin";
         }
     }
 
@@ -156,8 +160,9 @@ public class AdminController {
             return "addAuthor";
         }else {
             authorServiceImp.save(author);
-            request.setAttribute("success","Автор добавлен");
-            return "redirect:/admin/add/author";
+            request.setAttribute("successAuthor","Yes");
+            request.setAttribute("Id",author.getId());
+            return "admin";
         }
     }
 
@@ -204,7 +209,12 @@ public class AdminController {
         order.setStatus(value);
         ordersServiceImp.save(order);
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Статус у заказа с id: "+orderId+" изменени на "+value);
+        if(utilService.checkLanguage(request.getCookies()).equals("ru")){
+            response.getWriter().write("Статус у заказа с id: "+orderId+" изменен на "+value);
+        }else {
+            response.getWriter().write("Order status with id: "+orderId+" changed to "+value);
+        }
+
     }
 
     @GetMapping("/admin/list/orders")

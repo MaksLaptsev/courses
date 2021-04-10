@@ -58,9 +58,17 @@
     <div id="Html1" style="position:absolute;left:0px;top:193px;width:919px;height:623px;z-index:0">
         <c:forEach items="${pagedListHolder.pageList}" var="item">
             <figure style="border: 1px solid #000000; margin-right: 20px; margin-bottom: 7px; margin-left: 5px; margin-top: 5px">
-                <a href="/getbookById/${item.id}">
+                <div class="book_image">
                     <img src="${pageContext.request.contextPath}/${item.urlImg}" width="270" height="330" alt="" >
-                </a>
+                    <div class="button_book">
+                        <div class="info_book" >
+                            <button class="button_info" onclick="window.location.href='${pageContext.request.contextPath}/getbookById/${item.id}'"><spring:message code="app.book.info"/></button>
+                        </div>
+                        <div class="add_to_basket">
+                            <button class="button_add" onclick="addToBasket(${item.id})"><spring:message code="app.basket.add"/></button>
+                        </div>
+                    </div>
+                </div>
                 <figcaption style="text-align: center">${item.name}</figcaption>
             </figure>
         </c:forEach>
@@ -77,4 +85,27 @@
 
 
 </body>
+<script type="text/javascript" >
+    function addToBasket(id) {
+        <sec:authorize access="isAuthenticated()">
+        $.ajax({
+            url: '/userBasket/addToBasket',
+            method: 'POST',
+            action: 'update',
+            data:{id: id},
+            success: function (response) {
+                alert('<spring:message code="app.basket.action.add"/>');
+            },
+            error:  function(xhr, str){
+                alert('<spring:message code="app.page.error"/> ' + xhr.responseCode);
+            }
+        });
+        return false;
+        </sec:authorize>
+        <sec:authorize access="!isAuthenticated()">
+        alert('<spring:message code="app.page.regOrLog"/>');
+        </sec:authorize>
+        return false;
+    }
+</script>
 </html>

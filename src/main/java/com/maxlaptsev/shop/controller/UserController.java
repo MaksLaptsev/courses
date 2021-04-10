@@ -26,18 +26,18 @@ public class UserController {
     @GetMapping("/getActiveUserInfo")
     public ModelAndView getActiveUserInfo(){
         ModelAndView modelAndView = new ModelAndView();
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUserByContextHolder();
         modelAndView.setViewName("userInfo");
         modelAndView.addObject("userLogin",user.getUsername());
-        modelAndView.addObject("userInfo",user.getUserInfo());
+        modelAndView.addObject("userInfo",userInfoImp.findById(user.getUserInfo().getId()));
         return modelAndView;
     }
 
     @GetMapping("/editingUserInfo")
     public ModelAndView editingUserInfoGet(){
         ModelAndView modelAndView = new ModelAndView();
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserInfo userInfo = user.getUserInfo();
+        User user = userService.getUserByContextHolder();
+        UserInfo userInfo = userInfoImp.findById(user.getUserInfo().getId());
         modelAndView.setViewName("editingUserInfo");
         modelAndView.addObject("userInfoForm",userInfo);
         return modelAndView;
@@ -46,7 +46,7 @@ public class UserController {
     @PostMapping("/editingUserInfo")
     public ModelAndView editingUserInfoPost(@Valid @ModelAttribute("userInfoForm")UserInfo userInfoForm, BindingResult bindingResult,Model model){
         ModelAndView modelAndView = new ModelAndView();
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUserByContextHolder();
         if (bindingResult.hasErrors()){
             modelAndView.setViewName("editingUserInfo");
             modelAndView.addObject("userInfoForm",userInfoForm);
@@ -63,9 +63,9 @@ public class UserController {
     @GetMapping("/cancell")
     public ModelAndView getActiveUserInfoCancell(){
         ModelAndView modelAndView = new ModelAndView();
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUserByContextHolder();
         modelAndView.setViewName("userInfo");
-        modelAndView.addObject("userInfo",user.getUserInfo());
+        modelAndView.addObject("userInfo",userInfoImp.findById(user.getUserInfo().getId()));
         return modelAndView;
     }
 

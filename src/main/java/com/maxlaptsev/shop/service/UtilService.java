@@ -10,7 +10,9 @@ import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.ServletRequestUtils;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +21,15 @@ import java.util.Map;
 
 @Service
 public class UtilService {
+
+    public String checkLanguage(Cookie[] cookies){
+        for (Cookie coo:cookies) {
+            if (coo.getValue().length() < 3){
+                return coo.getValue();
+            }
+        }
+        return "ru";
+    }
 
     public int intPage(HttpServletRequest request, String p, int val){
 

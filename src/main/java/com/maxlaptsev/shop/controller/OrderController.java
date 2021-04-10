@@ -35,15 +35,15 @@ public class OrderController {
 
     @PostMapping("/userBasket/createOrder")
     public void createOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("name");
-        List<String> check = ordersServiceImp.checkBook(username);
+        User user = userService.getUserByContextHolder();
+        List<String> check = ordersServiceImp.checkBook(user.getId());
         if(check.size() > 0){
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(check.toString().replace("[","").replace("]",""));
-        }else if(userInfoImp.checkPhoneOrEmail(username)){
-            ordersServiceImp.createOrder(username);
-            basketServiceImp.clearBasket(username);
+        }else if(userInfoImp.checkPhoneOrEmail(user.getUserInfo().getId())){
+            ordersServiceImp.createOrder(user.getId());
+            basketServiceImp.clearBasket(user.getId());
             response.setContentType("text/plain");
             response.getWriter().write("Success");
         }else {

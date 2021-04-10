@@ -45,12 +45,12 @@
             <form name="sortMenu">
                 <select name="sel" onChange="changeSort(document.sortMenu.sel)">
                     <option value="#"><spring:message code="app.page.selectSort"/></option>
-                    <option title="Сортировка по цене"
-                            value="${clearUrl}?sort=price&ascending=true"><spring:message code="app.page.sort.byPrice"/> ↑</option>
-                    <option title="Сортировка по названию" value="${clearUrl}?sort=name&ascending=true"><spring:message code="app.page.sort.byName"/> ↑</option>
-                    <option title="Сортировка по цене"
-                            value="${clearUrl}?sort=price&ascending=false"><spring:message code="app.page.sort.byPrice"/> ↓</option>
-                    <option title="Сортировка по названию" value="${clearUrl}?sort=name&ascending=false"><spring:message code="app.page.sort.byName"/> ↓</option>
+                    <option title="Сортировка по фамилии"
+                            value="${clearUrl}?sort=lastName&ascending=true"><spring:message code="app.sort.author.lastName"/> ↑</option>
+                    <option title="Сортировка по названию" value="${clearUrl}?sort=name&ascending=true"><spring:message code="app.sort.name"/> ↑</option>
+                    <option title="Сортировка по фамилии"
+                            value="${clearUrl}?sort=lastName&ascending=false"><spring:message code="app.sort.author.lastName"/> ↓</option>
+                    <option title="Сортировка по названию" value="${clearUrl}?sort=name&ascending=false"><spring:message code="app.sort.name"/> ↓</option>
                 </select>
             </form>
             <script>
@@ -65,8 +65,8 @@
             <table class="table">
                 <tr>
                     <th width="20px">Id</th>
-                    <th style="border-bottom: black">Name</th>
-                    <th style="border-bottom: black">LastName</th>
+                    <th style="border-bottom: black"><spring:message code="app.user.name"/></th>
+                    <th style="border-bottom: black"><spring:message code="app.user.lastname"/></th>
 
 
                 </tr>

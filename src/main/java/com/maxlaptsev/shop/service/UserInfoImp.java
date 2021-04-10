@@ -27,13 +27,10 @@ public class UserInfoImp implements UserInfoService {
         return userInfoFromDB.orElse(new UserInfo());
     }
 
-    @Override
-    public UserInfo getOne(Integer id) {
-        return null;
-    }
 
-    public boolean checkPhoneOrEmail(String username){
-        UserInfo info = userInfoRepository.findByUser_Username(username);
+
+    public boolean checkPhoneOrEmail(Integer userInfoId){
+        UserInfo info = userInfoRepository.findById(userInfoId).orElse(new UserInfo());
         return ((info.getEmail() != null || info.getPhoneNumber() != null) && info.getName() != null) &&
                 ((!info.getEmail().equals("") || !info.getPhoneNumber().equals("")) && !info.getName().equals(""));
     }

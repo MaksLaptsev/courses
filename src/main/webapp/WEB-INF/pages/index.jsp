@@ -11,8 +11,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%-- Тут проверяю из куков какой был выбран язык  --%>
-<c:set var="lang" value="${pageContext.request.cookies[1].value.length() < 3 ? pageContext.request.cookies[1].value : pageContext.request.cookies[0].value }" scope="page" />
-<html lang="${lang}">
+<html>
 <head>
     <meta charset="utf-8">
     <title>Head</title>
@@ -28,8 +27,8 @@
         <span style="color:#000000;font-family:Arial;font-size:13px;"><spring:message code="app.lang.title"/></span></div>
     <span class="changeLang" style="position:absolute;left:601px;top:21px;width:116px;height:28px;z-index:4;">
             <select id="locale" name="lang">
-                <option value="en" ${lang == 'en' ? 'selected' : ''} ><spring:message code="app.lang.eng"/></option>
-                <option value="ru" ${lang == 'ru' ? 'selected' : ''}><spring:message code="app.lang.ru"/></option>
+                <option id="en" value="en"  ><spring:message code="app.lang.eng"/></option>
+                <option id="ru" value="ru" ><spring:message code="app.lang.ru"/></option>
             </select>
     </span>
 
@@ -44,9 +43,13 @@
                 if (selectedOption !== ''){
                     $('#locale').selected;
                     if (checkSimbol(replace(window.location.href.toString()))){
+
                         window.location.replace(replace(window.location.href.toString())+"&lang=" + selectedOption);
+                        document.getElementById(selectedOption).selected = true;
                     }else{
+
                         window.location.replace(replace(window.location.href.toString())+"?lang=" + selectedOption);
+                        document.getElementById(selectedOption).selected = true;
                     }
                 }
             });
@@ -129,6 +132,12 @@
         window.location.href = submitTo;
         return false;
     }
+</script>
+<script>
+    var xx = document.cookie.replace("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE=","");
+    $(document).ready(function() {
+        document.getElementById(xx).selected = true;
+    })
 </script>
 </body>
 </html>

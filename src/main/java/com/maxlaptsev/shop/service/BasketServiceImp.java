@@ -71,8 +71,8 @@ public class BasketServiceImp implements BasketService {
         basketRepository.save(basket);
     }
 
-    public void clearBasket(String userName){
-        Basket basket = userService.getUserByUsername(userName).getBasket();
+    public void clearBasket(Integer userId){
+        Basket basket = userService.findUserById(userId).getBasket();
         basket.getBooks().clear();
         basket.setTotalPrice(0.00);
         basketRepository.save(basket);

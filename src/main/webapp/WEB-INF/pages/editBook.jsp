@@ -25,12 +25,30 @@
     <div id="myModal" style="width: 350px; height: 200px">
         <form method="POST" id="uploadFile" action="" enctype="multipart/form-data">
             <p style="position: absolute; bottom: 150px;top: 30px;left: 60px"><spring:message code="app.admin.upload"/></p><br/>
-            <input id="file" type="file" name="file" style="position: absolute;top:90px;left: 65px"/><br/><br/>
-            <a title="Сохранить" class="pointer" id="upload" onclick="dynamicUpload()" style="position: absolute; top: 61%;left: 40%"><img src="${pageContext.request.contextPath}/resources/static/images/upload.png" width="75" height="75"></a>
+            <input id="file" type="file" name="file" style="visibility: hidden"/><br/><br/>
+            <input type="button" onclick="document.getElementById('file').click()" value="<spring:message code="app.admin.upload.file"/>" style="position: absolute;top:90px;left: 30%;width: 120px"/>
+            <a id="upload" class="pointer" onclick="dynamicUpload()" style="position: absolute; top: 70%;left: 33%; cursor: pointer;background: #e6e6e6;border: outset;width: 100px;text-decoration: none;color: black;"><spring:message code="app.user.save"/></a>
         </form>
         <span id="myModal__close" class="close">ₓ</span>
     </div>
     <div id="myOverlay"></div>
+
+        <div id="myModalDescription" style="width: 350px; height: 200px">
+            <form method="POST" id="uploadFileDescription" action="" enctype="multipart/form-data">
+                <p style="position: absolute; bottom: 150px;top: 30px;left: 60px"><spring:message code="app.admin.uploadBio"/> </p><br/>
+                <input id="fileDescription" accept="text/*" type="file" name="file" style="visibility: hidden"/><br/><br/>
+                <input type="button" onclick="document.getElementById('fileDescription').click()" value="<spring:message code="app.admin.upload.file"/>" style="position: absolute;top:90px;left: 30%;width: 120px"/>
+                <a id="uploadDescription" class="pointer" onclick="dynamicUploadDesc()" style="position: absolute; top: 70%;left: 33%; cursor: pointer;background: #e6e6e6;border: outset;width: 100px;text-decoration: none;color: black;"><spring:message code="app.user.save"/></a>
+            </form>
+            <span id="myModalDescription__close" class="close">ₓ</span>
+        </div>
+        <div id="myOverlayDescription"></div>
+
+        <div id="myModalLookDesc" style="height:fit-content">
+            <p><c:import url="${pageContext.request.contextPath}/${bookForm.description}" var ="dsc" charEncoding="UTF-8"/><c:out value="${dsc}"/></p>
+            <span id="myModalLookDesc__close" class="close">ₓ</span>
+        </div>
+        <div id="myOverlayLookDesc"></div>
 
 
     <div id="editingBook">
@@ -38,12 +56,13 @@
             <div class="profile"><img id="idImgBook" src="${pageContext.request.contextPath}/${bookForm.urlImg}" width="270" height="330">
                 <h1 id="h1EditBook"><spring:message code="app.admin.bookFace"/></h1>
                 <h2 title="Загрузка новой обложки" id="h2EditBook"><a id="uploadNewImg" href="#"><img id="idCover" src="${pageContext.request.contextPath}/resources/static/images/book.png" width="75" height="75"/></a></h2>
-                <p style="position: absolute; left: 147px; bottom: 35px"><spring:message code="app.admin.choose"/></p>
+                <p style="position: absolute; left: 147px; bottom: 20%;width: 50px"><spring:message code="app.admin.choose"/></p>
             </div>
             <%--@elvariable id="bookForm" type="com.maxlaptsev.shop.model.Book"--%>
             <form:form cssStyle="background: white" modelAttribute="bookForm" method="post" action="">
                 <form:hidden path="id" value="${bookForm.id}"/>
                 <form:hidden path="urlImg" id="url" value="${bookForm.urlImg}" />
+                <form:hidden path="description" id="description" value="${bookForm.description}"/>
                 <div>
                     <label><spring:message code="app.table.nameBook"/></label>
                     <form:input id="input" path="name" type="text" name="name" placeholder="${bookForm.name}"/>
@@ -94,6 +113,12 @@
                         <span id="modalGenre__close" class="close">ₓ</span>
                     </div>
                     <div id="overlayGenre"></div>
+                </div>
+                <div id="desc">
+                    <button id="uploadDesc"><spring:message code="app.admin.book.desc.add"/></button>
+                </div>
+                <div id="desc1" style="position: absolute;left: 80%;top: 81%;">
+                    <button id="lookDesc"><spring:message code="app.admin.book.getDesc"/></button>
                 </div>
                 <button id="changeButton" type="submit"><spring:message code="app.user.save"/></button>
             </form:form>
@@ -146,7 +171,7 @@
 
     function newAtt(name) {
         var el = document.getElementById('url');
-        el.placeholder='resources/static/images/'+name;
+        el.setAttribute('value','resources/static/images/'+name);
 
     }
 </script>
@@ -213,6 +238,27 @@
         });
     }
 </script>
+<%--просмотреть описание--%>
+<script>
+    $(document).ready(function () {
+        $('#lookDesc').click(function (event) {
+            event.preventDefault();
+
+            $('#myOverlayLookDesc').fadeIn(297, function () {
+                $('#myModalLookDesc')
+                    .css('display', 'block')
+                    .animate({opacity: 1}, 198);
+            });
+            $('#myModalLookDesc__close, #myOverlayLookDesc').click(function () {
+                $('#myModalLookDesc').animate({opacity: 0}, 198,
+                    function () {
+                        $(this).css('display', 'none');
+                        $('#myOverlayLookDesc').fadeOut(297);
+                    });
+            });
+        })
+    });
+</script>
 
 <script>
     $(document).ready(function () {
@@ -227,6 +273,57 @@
             overlayGetGenre();
         })
     });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#uploadDesc').click(function (event) {
+            event.preventDefault();
+
+            $('#myOverlayDescription').fadeIn(297, function () {
+                $('#myModalDescription')
+                    .css('display', 'block')
+                    .animate({opacity: 1}, 198);
+            });
+            $('#myModalDescription__close, #myOverlayDescription').click(function () {
+                $('#myModalDescription').animate({opacity: 0}, 198,
+                    function () {
+                        $(this).css('display', 'none');
+                        $('#myOverlayDescription').fadeOut(297);
+                    });
+            });
+        })
+    })
+</script>
+<script>
+    function dynamicUploadDesc(){
+
+        var formElement = $("[id='uploadFileDescription']")[0];
+        var fd = new FormData(formElement);
+        var fileInput = $("[id='fileDescription']")[0];
+        fd.append('fileDescription', fileInput.files[0] );
+        var name = fileInput.files[0].name;
+        console.log(fd);
+
+        $.ajax({
+            url: '${pageContext.request.contextPath}/admin/upload/bio',
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function(data){
+                if(data === "Вы удачно загрузили "+name || data === "You have successfully downloaded "+name){
+                    changeDescUrl(name);
+                }
+                alert(data);
+            }
+        });
+    }
+</script>
+<script>
+    function changeDescUrl(name) {
+        var el = document.getElementById('description');
+        el.setAttribute('value','resources/static/text/'+name);
+    }
 </script>
 </body>
 </html>

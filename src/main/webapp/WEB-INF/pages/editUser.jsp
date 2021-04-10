@@ -47,25 +47,25 @@
         <div id="editingBook">
             <div class="form-wrap">
                 <div class="profile">
-                    <p style="text-align: center; background: none">User Info</p>
+                    <p style="text-align: center; background: none"><spring:message code="app.admin.userInfo"/></p>
                     <div>
-                        <label>id</label>
+                        <label>Id</label>
                         <p>${userForm.userInfo.id}</p>
                     </div>
                     <div>
-                        <label>name</label>
+                        <label><spring:message code="app.user.name"/></label>
                         <p>${userForm.userInfo.name}</p>
                     </div>
                     <div>
-                        <label>lastname</label>
+                        <label><spring:message code="app.user.lastname"/></label>
                         <p>${userForm.userInfo.lastName}</p>
                     </div>
                     <div>
-                        <label>phoneNumber</label>
+                        <label><spring:message code="app.user.phonenumber"/></label>
                         <p>${userForm.userInfo.phoneNumber}</p>
                     </div>
                     <div>
-                        <label>email</label>
+                        <label>Email</label>
                         <p>${userForm.userInfo.email}</p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     <form:hidden path="userInfo" value="${userForm.userInfo.id}"/>
                     <form:hidden  path="id" name="id" value="${userForm.id}"/>
                     <form:hidden  path="username" name="username" value="${userForm.username}"/>
-                    <p style="text-align: center; background: none;color: black">User</p>
+                    <p style="text-align: center; background: none;color: black"><spring:message code="app.admin.user"/></p>
                     <div>
                         <label style="color: black">ID</label>
                         <p style="width: 100%;padding: 10px 15px;border-width: 0;background: #e6e6e6;outline: none;margin: 0;text-align: left;color: black">${userForm.id}</p>
@@ -92,14 +92,14 @@
                         </form:select>
                     </div>
                     <div>
-                        <label style="color: black">Заказы</label>
+                        <label style="color: black"><spring:message code="app.admin.listOrders"/></label>
                         <div id="modalOrder">
                             <table class="table">
                                 <tr>
                                     <th width="20px">Id</th>
-                                    <th style="border-bottom: black">date</th>
-                                    <th style="border-bottom: black">totalprice</th>
-                                    <th style="border-bottom: black">Status</th>
+                                    <th style="border-bottom: black"><spring:message code="app.user.order.date"/></th>
+                                    <th style="border-bottom: black"><spring:message code="app.basket.totalPrice"/></th>
+                                    <th style="border-bottom: black"><spring:message code="app.user.order.status"/></th>
                                 </tr>
                                 <c:forEach items="${userForm.orders}" var="order">
                                     <tr>
@@ -109,7 +109,7 @@
                                         <td id="${order.status}">${order.status}</td>
                                         <td style="border: none">
                                                 <select  class="changeStatus" name="changeStatus" >
-                                                    <option value="#">Выбрать статус</option>
+                                                    <option value="#"><spring:message code="app.admin.order.status"/></option>
                                                     <option data-id="${order.id}" title="<spring:message code="app.user.order.completed"/>" value="completed"><spring:message code="app.user.order.completed"/></option>
                                                     <option data-id="${order.id}" title="<spring:message code="app.user.order.processing"/>" value="processing"><spring:message code="app.user.order.processing"/></option>
                                                     <option data-id="${order.id}" title="<spring:message code="app.user.order.canceled"/>" value="canceled"><spring:message code="app.user.order.canceled"/></option>
@@ -122,7 +122,7 @@
                             <span id="modalOrder__close" class="close">ₓ</span>
                         </div>
                         <div id="orderOverlay"></div>
-                        <button id="userOrders">Просмотреть</button>
+                        <button id="userOrders"><spring:message code="app.admin.author.look"/></button>
                     </div>
                     <button id="changeButton" type="submit"><spring:message code="app.user.save"/></button>
                 </form:form>

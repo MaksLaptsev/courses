@@ -41,10 +41,10 @@
             </c:url>
             <c:if test="${pagedListHolder.source.size() > 0}">
                 <div class="clear_busket">
-                    <button onclick="clearBasket('${pageContext.request.userPrincipal.name}')"><spring:message code="app.basket.action.clear"/></button>
+                    <button onclick="clearBasket()"><spring:message code="app.basket.action.clear"/></button>
                 </div>
                 <div class="create_order">
-                    <button onclick="createOrder('${pageContext.request.userPrincipal.name}')"><spring:message code="app.basket.action.createOrder"/></button>
+                    <button onclick="createOrder()"><spring:message code="app.basket.action.createOrder"/></button>
                 </div>
                 <table class="table">
                     <tr>
@@ -98,12 +98,11 @@
     }
 </script>
 <script type="text/javascript">
-    function clearBasket(name) {
+    function clearBasket() {
         $.ajax({
             url: '/userBasket/clear',
             method:'POST',
             action: 'update',
-            data:{name:name},
             success: function (response) {
                 alert('<spring:message code="app.basket.action.emptied"/>');
                 location.reload();
@@ -118,12 +117,11 @@
 </script>
 
 <script type="text/javascript">
-    function createOrder(name) {
+    function createOrder() {
         $.ajax({
             url: '/userBasket/createOrder',
             method:'POST',
             action: 'post',
-            data:{name:name},
             success: function (response,request) {
 
                 if (response === "Success"){

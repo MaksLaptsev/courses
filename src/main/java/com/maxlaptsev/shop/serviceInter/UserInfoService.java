@@ -9,7 +9,5 @@ public interface UserInfoService {
 
     UserInfo findById(Integer id);
 
-    UserInfo getOne(Integer id);
-
     void save(UserInfo userInfo);
 }

@@ -28,8 +28,9 @@
             <div id="myModal1" style="width: 350px; height: 200px">
                     <form method="POST" id="uploadFile1" action="" enctype="multipart/form-data">
                         <p style="position: absolute; bottom: 150px;top: 30px;left: 60px"><spring:message code="app.admin.upload"/> </p><br/>
-                        <input id="file1" type="file" name="file" style="position: absolute;top:90px;left: 65px"/><br/><br/>
-                        <a title="Сохранить" class="pointer" id="upload1" onclick="dynamicUpload()" style="position: absolute; top: 61%;left: 40%"><img src="${pageContext.request.contextPath}/resources/static/images/upload.png" width="75" height="75"></a>
+                        <input id="file1" type="file" name="file" style="visibility: hidden"/><br/><br/>
+                        <input type="button" onclick="document.getElementById('file1').click()" value="<spring:message code="app.admin.upload.file"/>" style="position: absolute;top:90px;left: 30%;width: 120px"/>
+                        <a id="upload" class="pointer" onclick="dynamicUpload()" style="position: absolute; top: 70%;left: 33%; cursor: pointer;background: #e6e6e6;border: outset;width: 100px;text-decoration: none;color: black;"><spring:message code="app.user.save"/></a>
                     </form>
                 <span id="myModal__close1" class="close">ₓ</span>
             </div>
@@ -44,8 +45,9 @@
             <div id="myModal0" style="width: 350px; height: 200px">
                 <form method="POST" id="uploadFile0" action="" enctype="multipart/form-data">
                         <p style="position: absolute; bottom: 150px;top: 30px;left: 60px"><spring:message code="app.admin.uploadBio"/></p><br/>
-                    <input id="file0" type="file" name="file" style="position: absolute;top:90px;left: 65px"/><br/><br/>
-                    <a title="Сохранить" class="pointer" id="upload0" onclick="dynamicUploadBio()" style="position: absolute; top: 61%;left: 40%"><img src="${pageContext.request.contextPath}/resources/static/images/upload.png" width="75" height="75"></a>
+                    <input id="file0" type="file" name="file" style="visibility: hidden"/><br/><br/>
+                    <input type="button" onclick="document.getElementById('file0').click()" value="<spring:message code="app.admin.upload.file"/>" style="position: absolute;top:90px;left: 30%;width: 120px"/>
+                    <a id="upload0" class="pointer" onclick="dynamicUploadBio()" style="position: absolute; top: 70%;left: 33%; cursor: pointer;background: #e6e6e6;border: outset;width: 100px;text-decoration: none;color: black;"><spring:message code="app.user.save"/></a>
                 </form>
                 <span id="myModal__close0" class="close">ₓ</span>
             </div>
@@ -57,7 +59,7 @@
                 <div class="profile"><img id="idImgAuthor" src="${pageContext.request.contextPath}/${authorForm.urlImg}" width="270" height="330">
                     <h1 id="h1EditBook"><spring:message code="app.author.photo"/></h1>
                     <h2 title="Загрузка новой обложки" id="h2EditBook"><a id="uploadNewImg" href="#"><img id="idCover" src="${pageContext.request.contextPath}/resources/static/images/book.png" width="75" height="75"/></a></h2>
-                    <p style="position: absolute; left: 147px; bottom: 35px"><spring:message code="app.admin.edit"/></p>
+                    <p style="position: absolute; left: 147px; bottom: 35px;width: 50px"><spring:message code="app.admin.edit"/></p>
                 </div>
                 <%--@elvariable id="authorForm" type="com.maxlaptsev.shop.model.Author"--%>
                 <form:form cssStyle="background: white; height: 551px" modelAttribute="authorForm" method="post" action="" >
@@ -125,8 +127,6 @@
                         $(overlayMy).fadeOut(297);
                     });
             });
-
-
         }
     </script>
 
@@ -194,9 +194,6 @@
             });
         }
     </script>
-
-
-
     <script>
         function successUpload(url) {
             var el = document.getElementById('idImgAuthor');

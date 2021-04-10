@@ -1,7 +1,10 @@
 package com.maxlaptsev.shop.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,9 +29,10 @@ public class Book {
     @DecimalMin(value = "0.00", message = "{app.valid.book.name}")
     @Column(name = "PRICE")
     private double price;
-    //todo добавить год издания
     @Column(name = "URLIMG")
     private String urlImg;
+    @Column(name = "DESCRIPTION")
+    private String description;
 
 
 
@@ -48,7 +52,7 @@ public class Book {
         this.price = price;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinTable(catalog = "DB", schema = "SHOP", name = "BOOK_AUTHOR",
             joinColumns =  @JoinColumn(name = "BOOK_ID"),
             inverseJoinColumns = @JoinColumn(name = "AUTHOR_ID"))
@@ -172,7 +176,13 @@ public class Book {
         this.urlImg = urlImg;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String authorToString(){
         StringBuilder s = new StringBuilder();

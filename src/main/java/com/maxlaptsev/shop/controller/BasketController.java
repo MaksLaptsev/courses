@@ -56,10 +56,11 @@ public class BasketController {
     }
 
     @PostMapping("/userBasket/clear")
-    public void clearBasket(HttpServletRequest request, HttpServletResponse response){
-        String userName = request.getParameter("name");
-        basketServiceImp.clearBasket(userName);
-        response.setHeader("Success","Success");
+    public void clearBasket(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = userService.getUserByContextHolder();
+        basketServiceImp.clearBasket(user.getId());
+        response.setContentType("text/plain");
+        response.getWriter().write("Success");
     }
 
 

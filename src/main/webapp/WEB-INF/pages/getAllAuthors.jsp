@@ -52,13 +52,11 @@
         <div id="Html1" style="position:absolute;left:0px;top:193px;width:919px;height:623px;z-index:0">
                 <table class="table">
                     <tr>
-                        <th width="20px">Id</th>
                         <th style="border-bottom: black"><spring:message code="app.user.name"/></th>
                         <th style="border-bottom: black"><spring:message code="app.user.lastname"/></th>
                     </tr>
                     <c:forEach items="${pagedListHolder.pageList}" var="item">
                         <tr>
-                            <td>${item.id}</td>
                             <td><a href="/getAuthorById/${item.id}">${item.name}</a></td>
                             <td>${item.lastName}</td>
                         </tr>

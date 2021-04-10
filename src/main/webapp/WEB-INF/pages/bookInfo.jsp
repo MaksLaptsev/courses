@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -64,25 +65,41 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="description" style="position: absolute">
+                <label style="width: 550px; position: absolute;top: 15px; font-size: 15px;">
+                        <c:if test="${getbook.description.length() > 5}">
+                            <c:import url="${pageContext.request.contextPath}/${getbook.description}" var ="desc" charEncoding="UTF-8"/>
+                            <c:out value="${desc}"/>
+                        </c:if>
+                        <c:if test="${getbook.description.length() < 2}">
+                            <label style="width: 550px; position: absolute;top: 15px; font-size: 15px;"><spring:message code="app.book.info.desc"/></label>
+                        </c:if>
+                </label>
+            </div>
         </div>
     </div>
     <button onclick="addToBasket(${getbook.id})"><spring:message code="app.basket.add"/></button>
 
     <script type="text/javascript" >
         function addToBasket(id) {
-
-            $.ajax({
-                url: '/userBasket/addToBasket',
-                method: 'POST',
-                action: 'update',
-                data:{id: id},
-                success: function (response) {
-                    alert('<spring:message code="app.basket.action.add"/>');
-                },
-                error:  function(xhr, str){
-                    alert('<spring:message code="app.page.error"/> ' + xhr.responseCode);
-                }
-            });
+            <sec:authorize access="isAuthenticated()">
+                $.ajax({
+                    url: '/userBasket/addToBasket',
+                    method: 'POST',
+                    action: 'update',
+                    data:{id: id},
+                    success: function (response) {
+                        alert('<spring:message code="app.basket.action.add"/>');
+                    },
+                    error:  function(xhr, str){
+                        alert('<spring:message code="app.page.error"/> ' + xhr.responseCode);
+                    }
+                });
+                return false;
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+                alert('<spring:message code="app.page.regOrLog"/>');
+            </sec:authorize>
             return false;
         }
     </script>
