@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -29,10 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Доступ только для не зарегистрированных пользователей
                 .antMatchers("/registration").not().fullyAuthenticated()
                 //Доступ только для пользователей с ролью Администратор
-                .antMatchers("/admin/**","/admin**").hasRole("ADMIN")
+                .antMatchers("/admin/**", "/admin**").hasRole("ADMIN")
                 .antMatchers().hasRole("USER")
                 //Доступ разрешен всем пользователей
-                .antMatchers("/","/getbookById/**","/getAuthorById/**","/getAllBooks/**","/getAllBooks**","/allGenre**","/resources/**","/index**","/getAllAuthors**").permitAll()
+                .antMatchers("/", "/**", "/getbookById/**", "/getAuthorById/**", "/getAllBooks/**", "/getAllBooks**", "/allGenre**", "/resources/**", "/index**", "/getAllAuthors**").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
