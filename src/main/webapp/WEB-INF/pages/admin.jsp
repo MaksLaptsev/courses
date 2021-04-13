@@ -35,7 +35,7 @@
         <div id="modalSuccessAuthor" style="width: 400px; height: 140px">
             <p><spring:message code="app.admin.addAuthorSuccess"/></p>
             <button onclick="location.href='${pageContext.request.contextPath}/admin/add/author'"><spring:message code="app.admin.addAuthorAgain"/></button>
-            <button onclick="location.href='${pageContext.request.contextPath}/admin/list/author?id=${Id}'" style="position: relative; top: 15px;"><spring:message code="app.admin.editAddAuthor"/></button>
+            <button onclick="location.href='${pageContext.request.contextPath}/admin/list/author?id=${Id}'" ><spring:message code="app.admin.editAddAuthor"/></button>
             <span id="modalSuccessAuthor__close" class="close">ₓ</span>
         </div>
         <div id="overlaySuccessAuthor"></div>
