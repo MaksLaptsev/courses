@@ -17,6 +17,7 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import javax.servlet.MultipartConfigElement;
+import java.util.Locale;
 
 @Configuration
 @ComponentScan(basePackages = "com.maxlaptsev.shop.controller")
