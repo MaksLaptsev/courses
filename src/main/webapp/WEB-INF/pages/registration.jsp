@@ -33,7 +33,7 @@
     <div class="outer">
         <div class="middle">
             <div class="inner">
-                <div class="login-wr">
+                <div class="login-wr" style="top: 80px">
                     <h2><spring:message code="app.page.registration"/></h2>
 
 

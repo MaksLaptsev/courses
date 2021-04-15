@@ -75,7 +75,7 @@
             <span style="color:#000000;font-family:'Times New Roman';font-size:27px;"><spring:message code="${head}"/></span></div>
     </div>
     <div id="pagin">
-        <div id="htmlPagin" style="position:absolute;left:387px;top:913px;width:144px;height:63px;z-index:0">
+        <div id="htmlPagin" style="position:absolute;left:387px;top:913px;height:63px;z-index:0">
             <tg:paging pagedListHolder="${pagedListHolder}"
                        pagedLink="${pagedLink}" /></div>
     </div>
