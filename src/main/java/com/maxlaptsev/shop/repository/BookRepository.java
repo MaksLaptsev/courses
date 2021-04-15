@@ -17,6 +17,8 @@ public interface BookRepository extends JpaRepository<Book,Integer> {
     @Override
     <S extends Book> S saveAndFlush(S s);
 
+    List<Book> findTop6ByOrderByIdDesc();
+
     Book findBookByName(String bookName);
 
     List<Book> findBooksByGenreIn(List<GenreEnum> genre);

@@ -65,7 +65,7 @@ public class BookServiceImp implements BookService {
 
     public List<Book> findBookStart(){
         List<Book> result = new ArrayList<>();
-        List<Book> books = bookRepository.findAll();
+        List<Book> books = bookRepository.findTop6ByOrderByIdDesc();
         int i = 0;
         for (Book b :books) {
             result.add(b);
